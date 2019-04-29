@@ -4,9 +4,7 @@ import AdminLayout from './containers/AdminLayout'
 
 function App() {
   return (
-    <>
-      <AdminLayout/>
-    </>
+    <AdminLayout/>
   );
 }
 
