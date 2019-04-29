@@ -10,12 +10,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 const drawerWidth = 240;
 const styles = theme => ({
-  root: {
-    width: `calc(100% - ${drawerWidth}px)`,
-  },
-  grow: {
-    flexGrow: 1,
-  },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
@@ -30,6 +24,9 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
+  hide: {
+    display: 'none',
+  },
   menuButton: {
     marginLeft: 12,
     marginRight: 20,
@@ -41,7 +38,12 @@ class PrimarySearchAppBar extends React.Component {
     const { open, handleDrawerOpen } = this.props
     const { classes } = this.props;
     return (
-    <AppBar>
+    <AppBar
+        position="fixed"
+        className={classNames(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
+      >
         <Toolbar disableGutters={!open}>
         <IconButton
           color="inherit"
