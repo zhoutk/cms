@@ -17,18 +17,16 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
-const drawerWidth = 240;
-
 const styles = theme => ({
   root: {
     display: 'flex',
   },
   drawer: {
-    width: drawerWidth,
+    width: theme.drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {
-    width: drawerWidth,
+    width: theme.drawerWidth,
   },
   drawerHeader: {
     display: 'flex',
@@ -44,7 +42,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: -theme.drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
