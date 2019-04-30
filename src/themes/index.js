@@ -23,6 +23,7 @@ export const overrides = {
     },
     h6: {
       fontSize: '1.142rem',
-    }
+    },
+    useNextVariants: true
   }
 };
