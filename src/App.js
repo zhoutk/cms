@@ -1,5 +1,4 @@
 import React from 'react'
-import './App.css';
 import AdminLayout from './containers/AdminLayout'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import themes, { overrides } from './themes';
