@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -32,11 +31,7 @@ const styles = theme => ({
   }
 });
 
-class PrimarySearchAppBar extends React.Component {
-  render() {
-    const { open, handleDrawerOpen } = this.props
-    const { classes } = this.props;
-    return (
+const PrimarySearchAppBar = ({open, handleDrawerOpen, classes}) => (
     <AppBar
         position="fixed"
         className={classNames(classes.appBar, {
@@ -57,12 +52,6 @@ class PrimarySearchAppBar extends React.Component {
         </Typography>
       </Toolbar>
     </AppBar>
-    );
-  }
-}
-
-PrimarySearchAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
+)
 
 export default withStyles(styles)(PrimarySearchAppBar);
