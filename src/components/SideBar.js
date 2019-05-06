@@ -5,7 +5,6 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -39,11 +38,7 @@ const SideBar = ({ open, handleDrawerClose, classes }) => {
       </IconButton>
       </div>
       <Divider />
-      <List
-        component="nav"
-        subheader={<ListSubheader component="div">Nested List Items</ListSubheader>}
-        className={classes.list}
-      >
+      <List component="div" disablePadding >
         <ListItem button onClick={handleClick}>
           <ListItemIcon>
             <InboxIcon />
