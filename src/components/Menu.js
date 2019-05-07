@@ -56,22 +56,24 @@ const styles = theme => ({
   });
 
 const Menu = ({classes}) => {
-    const [ open, setopen ] = useState( false )
-    const handleClick = () => {
-      setopen(!open );
+    const [ open, setopen ] = useState( { "1": false} )
+    const handleClick = (id) => {
+        return () => {
+            setopen(Object.assign({}, open, { [id]: !open[id]}) );
+        }
     };
     const genMenus = (menus, deep = 1) => {
         return menus.map((al) => {
             return <List component="div" key={al.id} disablePadding>
-                <ListItem button onClick={al.items ? handleClick : null} style={{paddingLeft: 20 * deep}}>
+                <ListItem button onClick={al.items ? handleClick(al.id) : null} style={{paddingLeft: 20 * deep}}>
                 <ListItemIcon>
                     <Icon> {al.icon ? al.icon : 'reorder'} </Icon>
                 </ListItemIcon>
                 <ListItemText inset primary={al.text} />
-                {al.items ? (open ? <Icon>expand_less</Icon> : <Icon>expand_more</Icon> ) : ''}
+                {al.items ? (open[al.id] ? <Icon>expand_less</Icon> : <Icon>expand_more</Icon> ) : ''}
                 </ListItem>
                 {
-                    al.items ? (<Collapse in={open} timeout="auto" unmountOnExit>
+                    al.items ? (<Collapse in={open[al.id]} timeout="auto" unmountOnExit>
                         {genMenus(al.items, deep + 1)}
                     </Collapse>) : ''
                 }
