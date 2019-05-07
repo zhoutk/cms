@@ -56,7 +56,7 @@ const styles = theme => ({
   });
 
 const Menu = ({classes}) => {
-    const [ open, setopen ] = useState( { "1": false} )
+    const [ open, setopen ] = useState( {} )
     const handleClick = (id) => {
         return () => {
             setopen(Object.assign({}, open, { [id]: !open[id]}) );
