@@ -3,22 +3,25 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import * as Icons from '@material-ui/icons';
+import Icon from '@material-ui/core/Icon';
 import Collapse from '@material-ui/core/Collapse';
 import { useState } from 'react'
 import { withStyles } from '@material-ui/core/styles';
 
 const menus = [{
+    id: 1,
     text: 'system admin',
-    icon: 'Report',
+    icon: 'report_sharp',
     url: 'sysadmin',
 }, {
+    id: 2,
     text: 'book',
-    icon: 'Book',
+    icon: 'book',
     url: 'book',
     items: [
         {
-            text: 'bug admin',
+        id: 3,
+        text: 'bug admin',
             icon: 'BugReport',
             url: 'bug'
         }
@@ -42,25 +45,18 @@ const Menu = ({classes}) => {
       setopen(!open );
     };
     return (
-        <List component="div" disablePadding >
-            <ListItem button onClick={handleClick}>
-            <ListItemIcon>
-                <Icons.ReportTwoTone />
-            </ListItemIcon>
-            <ListItemText inset primary="Mine" />
-            {open ? <Icons.ExpandLess /> : <Icons.ExpandMore />}
-            </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
+        <>
+        {menus.map((al) => {
+            return <List component="div" key={al.id} disablePadding>
                 <ListItem button className={classes.nested}>
                 <ListItemIcon>
-                    <Icons.StarBorder />
+                    <Icon> {al.icon} </Icon>
                 </ListItemIcon>
-                <ListItemText inset primary="Starred" />
+                <ListItemText inset primary={al.text} />
                 </ListItem>
             </List>
-            </Collapse>
-        </List>
+        })}
+        </>
     )
 }
 
