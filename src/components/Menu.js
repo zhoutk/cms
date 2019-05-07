@@ -10,19 +10,19 @@ import { withStyles } from '@material-ui/core/styles';
 
 const menus = [{
     id: 1,
-    text: 'system admin',
-    icon: 'report_sharp',
+    text: '系统管理',
+    icon: 'report',
     url: 'sysadmin',
 }, {
     id: 2,
-    text: 'book',
+    text: '图书管理',
     icon: 'book',
     url: 'book',
     items: [
         {
         id: 3,
-        text: 'bug admin',
-            icon: 'BugReport',
+        text: '问题追踪',
+            icon: 'bug_report',
             url: 'bug'
         }
     ]
@@ -44,9 +44,8 @@ const Menu = ({classes}) => {
     const handleClick = () => {
       setopen(!open );
     };
-    return (
-        <>
-        {menus.map((al) => {
+    const genMenus = (menus) => {
+        return menus.map((al) => {
             return <List component="div" key={al.id} disablePadding>
                 <ListItem button className={classes.nested}>
                 <ListItemIcon>
@@ -55,7 +54,11 @@ const Menu = ({classes}) => {
                 <ListItemText inset primary={al.text} />
                 </ListItem>
             </List>
-        })}
+        })
+    }
+    return (
+        <>
+        {genMenus(menus)}
         </>
     )
 }
