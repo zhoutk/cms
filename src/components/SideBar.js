@@ -31,14 +31,6 @@ const SideBar = ({ open, handleDrawerClose, classes }) => {
 )}
 
 const styles = theme => ({
-  list: {
-    width: '100%',
-    maxWidth: theme.drawerWidth,
-    backgroundColor: theme.palette.background.paper,
-  },
-  nested: {
-    paddingLeft: theme.spacing.unit * 4,
-  },
   drawer: {
     width: theme.drawerWidth,
     flexShrink: 0,

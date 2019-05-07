@@ -11,8 +11,16 @@ import { withStyles } from '@material-ui/core/styles';
 const menus = [{
     id: 1,
     text: '系统管理',
-    icon: 'report',
+    icon: 'reorder',
     url: 'sysadmin',
+    items: [
+        {
+        id:4,
+        text: '邮件处理',
+            icon: 'contact_mail',
+            url: 'mail'
+        }
+    ]
 }, {
     id: 2,
     text: '图书管理',
@@ -20,23 +28,31 @@ const menus = [{
     url: 'book',
     items: [
         {
-        id: 3,
-        text: '问题追踪',
+            id: 3,
+            text: '问题追踪',
             icon: 'bug_report',
-            url: 'bug'
+            url: 'bug',
+            items: [
+                {
+                    id:5,
+                    text: '业务处理',
+                    icon: 'business',
+                    url: 'business',
+                    items: [
+                        {
+                            id:6,
+                            text: '聊天管理',
+                            icon: 'chat',
+                            url: 'chat'
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }]
 
 const styles = theme => ({
-    list: {
-      width: '100%',
-      maxWidth: theme.drawerWidth,
-      backgroundColor: theme.palette.background.paper,
-    },
-    nested: {
-      paddingLeft: theme.spacing.unit * 4,
-    },
   });
 
 const Menu = ({classes}) => {
@@ -44,19 +60,19 @@ const Menu = ({classes}) => {
     const handleClick = () => {
       setopen(!open );
     };
-    const genMenus = (menus) => {
+    const genMenus = (menus, deep = 1) => {
         return menus.map((al) => {
             return <List component="div" key={al.id} disablePadding>
-                <ListItem button onClick={al.items ? handleClick : null} className={al.items ? classes.nested : ''}>
+                <ListItem button onClick={al.items ? handleClick : null} style={{paddingLeft: 20 * deep}}>
                 <ListItemIcon>
-                    <Icon> {al.icon} </Icon>
+                    <Icon> {al.icon ? al.icon : 'reorder'} </Icon>
                 </ListItemIcon>
                 <ListItemText inset primary={al.text} />
                 {al.items ? (open ? <Icon>expand_less</Icon> : <Icon>expand_more</Icon> ) : ''}
                 </ListItem>
                 {
                     al.items ? (<Collapse in={open} timeout="auto" unmountOnExit>
-                        {genMenus(al.items)}
+                        {genMenus(al.items, deep + 1)}
                     </Collapse>) : ''
                 }
             </List>
