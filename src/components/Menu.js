@@ -47,12 +47,18 @@ const Menu = ({classes}) => {
     const genMenus = (menus) => {
         return menus.map((al) => {
             return <List component="div" key={al.id} disablePadding>
-                <ListItem button className={classes.nested}>
+                <ListItem button onClick={al.items ? handleClick : null} className={al.items ? classes.nested : ''}>
                 <ListItemIcon>
                     <Icon> {al.icon} </Icon>
                 </ListItemIcon>
                 <ListItemText inset primary={al.text} />
+                {al.items ? (open ? <Icon>expand_less</Icon> : <Icon>expand_more</Icon> ) : ''}
                 </ListItem>
+                {
+                    al.items ? (<Collapse in={open} timeout="auto" unmountOnExit>
+                        {genMenus(al.items)}
+                    </Collapse>) : ''
+                }
             </List>
         })
     }
