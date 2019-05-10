@@ -2,7 +2,7 @@ const direction = 'ltr'
 
 export default {
   drawerWidth: 240,
-  direction
+  direction,
 };
 
 export { direction }
