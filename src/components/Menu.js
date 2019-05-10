@@ -53,9 +53,6 @@ const menus = [{
 }]
 
 const styles = theme => ({
-    link: {
-        padding: '0 0 0 0'
-    }
   });
 
 const Menu = ({classes}) => {
@@ -74,7 +71,7 @@ const Menu = ({classes}) => {
                 </ListItemIcon>
                 {
                     al.items ? al.text : 
-                        <Link to={al.url} className={classes.link}>
+                        <Link to={al.url}>
                             {al.text}
                         </Link>
                 }
