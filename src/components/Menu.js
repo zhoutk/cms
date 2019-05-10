@@ -28,6 +28,11 @@ const menus = [{
     url: 'button',
     items: [
         {
+            id: 7,
+            text: '按键示例',
+            icon: 'subject',
+            url: 'button',
+        }, {
             id: 3,
             text: '问题追踪',
             icon: 'bug_report',
@@ -69,12 +74,7 @@ const Menu = ({classes}) => {
                 <ListItemIcon>
                     <Icon> {al.icon ? al.icon : 'reorder'} </Icon>
                 </ListItemIcon>
-                {
-                    al.items ? al.text : 
-                        <Link to={al.url}>
-                            {al.text}
-                        </Link>
-                }
+                { al.items ? al.text : <Link to={al.url}> {al.text} </Link> }
                 {al.items ? (open[al.id] ? <Icon>expand_less</Icon> : <Icon>expand_more</Icon> ) : ''}
                 </ListItem>
                 {
