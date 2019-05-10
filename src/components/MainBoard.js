@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from './Home';
 import Button from './Button'
 import NotFound from './NotFound'
@@ -39,14 +39,12 @@ const MainBoard = ({ classes, open }) => (
         })}
     >
         <div className={classes.drawerHeader} />
-        <BrowserRouter>
         <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/home" component={Home} />
             <Route path="/button" component={Button} />
             <Route component={NotFound} />
           </Switch>
-          </BrowserRouter>
     </main>
 )
 

@@ -2,6 +2,7 @@ import React from 'react'
 import AdminLayout from './containers/AdminLayout'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import themes, { overrides } from './themes';
+import { BrowserRouter } from "react-router-dom";
 
 const theme = createMuiTheme({
     ...themes.default, 
@@ -10,9 +11,12 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <MuiThemeProvider theme = { theme }>
-      <AdminLayout/>
-    </MuiThemeProvider>);
+    <BrowserRouter>
+      <MuiThemeProvider theme = { theme }>
+        <AdminLayout/>
+      </MuiThemeProvider>
+    </BrowserRouter>
+    );
 }
 
 export default App;

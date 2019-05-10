@@ -2,36 +2,36 @@ import React from 'react'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import Icon from '@material-ui/core/Icon';
 import Collapse from '@material-ui/core/Collapse';
 import { useState } from 'react'
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 
 const menus = [{
     id: 1,
     text: '系统管理',
     icon: 'reorder',
-    url: 'sysadmin',
+    url: 'home',
     items: [
         {
         id:4,
         text: '邮件处理',
             icon: 'contact_mail',
-            url: 'mail'
+            url: 'home'
         }
     ]
 }, {
     id: 2,
     text: '图书管理',
     icon: 'book',
-    url: 'book',
+    url: 'button',
     items: [
         {
             id: 3,
             text: '问题追踪',
             icon: 'bug_report',
-            url: 'bug',
+            url: 'button',
             items: [
                 {
                     id:5,
@@ -53,6 +53,9 @@ const menus = [{
 }]
 
 const styles = theme => ({
+    link: {
+        padding: '0 0 0 0'
+    }
   });
 
 const Menu = ({classes}) => {
@@ -69,7 +72,12 @@ const Menu = ({classes}) => {
                 <ListItemIcon>
                     <Icon> {al.icon ? al.icon : 'reorder'} </Icon>
                 </ListItemIcon>
-                <ListItemText inset primary={al.text} />
+                {
+                    al.items ? al.text : 
+                        <Link to={al.url} className={classes.link}>
+                            {al.text}
+                        </Link>
+                }
                 {al.items ? (open[al.id] ? <Icon>expand_less</Icon> : <Icon>expand_more</Icon> ) : ''}
                 </ListItem>
                 {
